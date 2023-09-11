@@ -10,6 +10,7 @@ app.get('/api', (req, res) => {
     try{
         const { slack_name, track } = req.query;
         const current_time = new Date();
+        // UTC time
         const utc_time = format(current_time, "yyyy-MM-dd'T'HH:mm:ss'Z'");
         const github_file_url = new URL('https://github.com/Fredrick-A-prime/HNG-TASK-1/blob/main/index.js')
         const github_repo_url = new URL('https://github.com/Fredrick-A-prime/HNG-TASK-1')
