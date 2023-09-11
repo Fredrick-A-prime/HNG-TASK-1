@@ -13,7 +13,7 @@ app.get('/api', (req, res) => {
         const current_time = new Date();
         const utc_time = current_time.toISOString();
         const twoMinutesAgo = new Date(current_time.getTime() - 120000);
-        const timeDifferenceInMilliseconds = current_time - twoMinutesAgo;
+        const timeDifferenceInMilliseconds = current_time.getTime() - twoMinutesAgo.getTime();
 
         if (timeDifferenceInMilliseconds > 120000) {
             return res.status(400).json({ error: 'Time validation failed' });
@@ -31,7 +31,7 @@ app.get('/api', (req, res) => {
             github_repo_url,
             status_code: 200
         }
-        res.status(201).json(data)
+        res.status(200).json(data)
     } catch (error) {res.status(400).json('error')}
 })
 
