@@ -19,7 +19,7 @@ app.get('/api', (req, res) => {
             return res.status(400).json({ error: 'Time validation failed' });
         }
         const utc_time = current_time_iso.slice(0, -1);
-        const github_file_url = new URL('https://github.com/username/repo/blob/main/file_name.ext')
+        const github_file_url = new URL('https://github.com/Fredrick-A-prime/HNG-TASK-1/blob/main/index.js')
         const github_repo_url = new URL('https://github.com/Fredrick-A-prime/HNG-TASK-1')
 
         const data = {
