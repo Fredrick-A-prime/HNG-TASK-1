@@ -5,7 +5,7 @@ const { URL } = require('url');
 
 
 
-app.get('/task', (req, res) => {
+app.get('/api', (req, res) => {
     try{
         const { slack_name, track } = req.query;
         const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
