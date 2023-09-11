@@ -11,14 +11,14 @@ app.get('/api', (req, res) => {
         const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const current_day = daysOfWeek[new Date().getDay()];
         const current_time = new Date();
-        const current_time_iso = current_time.toISOString();
+        const utc_time = current_time.toISOString();
         const twoMinutesAgo = new Date(current_time.getTime() - 120000);
         const timeDifferenceInMilliseconds = current_time - twoMinutesAgo;
 
         if (timeDifferenceInMilliseconds > 120000) {
             return res.status(400).json({ error: 'Time validation failed' });
         }
-        const utc_time = current_time_iso.slice(0, -1);
+        // const utc_time = current_time_iso.slice(0, -1);
         const github_file_url = new URL('https://github.com/Fredrick-A-prime/HNG-TASK-1/blob/main/index.js')
         const github_repo_url = new URL('https://github.com/Fredrick-A-prime/HNG-TASK-1')
 
