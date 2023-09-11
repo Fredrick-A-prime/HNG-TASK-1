@@ -9,9 +9,10 @@ const port = process.env.PORT || 3000;
 app.get('/api', (req, res) => {
     try{
         const { slack_name, track } = req.query;
+        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const current_day = daysOfWeek[new Date().getDay()];
         const current_time = new Date();
-        const utc_time_with_milliseconds = current_time.toISOString();
-        const utc_time = utc_time_with_milliseconds.split('.')[0] + 'Z';
+        const utc_time = format(current_time, "yyyy-MM-dd'T'HH:mm:ss'Z'");
         const github_file_url = new URL('https://github.com/Fredrick-A-prime/HNG-TASK-1/blob/main/index.js')
         const github_repo_url = new URL('https://github.com/Fredrick-A-prime/HNG-TASK-1')
 
