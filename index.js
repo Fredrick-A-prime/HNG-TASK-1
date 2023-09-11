@@ -1,24 +1,16 @@
 const express = require('express');
+const { URL } = require('url');
+const { format } = require('date-fns');
 const app = express();
 const port = process.env.PORT || 3000;
-const { URL } = require('url');
 
 
 
 app.get('/api', (req, res) => {
     try{
         const { slack_name, track } = req.query;
-        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        const current_day = daysOfWeek[new Date().getDay()];
         const current_time = new Date();
-        const utc_time = current_time.toISOString();
-        const twoMinutesAgo = new Date(current_time.getTime() - 120000);
-        const timeDifferenceInMilliseconds = current_time.getTime() - twoMinutesAgo.getTime();
-
-        if (timeDifferenceInMilliseconds > 120000) {
-            return res.status(400).json({ error: 'Time validation failed' });
-        }
-        // const utc_time = current_time_iso.slice(0, -1);
+        const utc_time = format(current_time, "yyyy-MM-dd'T'HH:mm:ss'Z'");
         const github_file_url = new URL('https://github.com/Fredrick-A-prime/HNG-TASK-1/blob/main/index.js')
         const github_repo_url = new URL('https://github.com/Fredrick-A-prime/HNG-TASK-1')
 
